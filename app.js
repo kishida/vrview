@@ -5,6 +5,17 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+var controls = new THREE.VRControls(camera);
+controls.standing = true;
+
+var effect = new THREE.VREffect(renderer);
+effect.setSize(window.innerWidth, window.innerHeight);
+
+var manager = new WebVRManager(renderer, effect);
+
+window.addEventListener('resize', onResize, true);
+window.addEventListener('vrdisplaypresentchange', onResize, true);
+
 var geometry = new THREE.BoxGeometry(1, 1, 1);
 var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
 var cube = new THREE.Mesh(geometry, material);
@@ -16,6 +27,16 @@ function render() {
   cube.rotation.x += 0.1;
   cube.rotation.y += 0.01;
   requestAnimationFrame(render);
-  renderer.render(scene, camera);
+
+  controls.update();
+
+  //renderer.render(scene, camera);
+  manager.render(scene, camera);
 }
 render();
+
+function onResize(e) {
+  effect.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+}
