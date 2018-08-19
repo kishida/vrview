@@ -1,9 +1,10 @@
 var scene = new THREE.Scene();
+scene.background = new THREE.Color( 0x505050 );
+
 var camera = new THREE.PerspectiveCamera(
   75, window.innerWidth / window.innerHeight, 0.1, 1000);
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
 
 //var controls = new THREE.VRControls(camera);
 //controls.standing = true;
@@ -24,6 +25,7 @@ scene.add(cube);
 renderer.render(scene, camera);
 renderer.vr.enabled = true;
 
+document.body.appendChild(renderer.domElement);
 document.body.appendChild( WEBVR.createButton( renderer ) );
 
 function render() {
