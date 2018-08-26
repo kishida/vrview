@@ -13,7 +13,8 @@ var lgeo = new THREE.SphereBufferGeometry( 500, 60, 40);
 lgeo.scale(-1, 1, 1);
 var luvs = lgeo.attributes.uv.array;
 for (var i = 0; i < luvs.length; i+=2) {
-  luvs[i] *= 0.5;
+  luvs[i] *= 2;
+luvs[i] -= .5;
 }
 var lmat = new THREE.MeshBasicMaterial({map: ltexture});
 var lmesh = new THREE.Mesh(lgeo, lmat);
@@ -26,18 +27,20 @@ var rgeo = new THREE.SphereBufferGeometry( 500, 60, 40);
 rgeo.scale(-1, 1, 1);
 var ruvs = rgeo.attributes.uv.array;
 for (var i = 0; i < ruvs.length; i+=2) {
-  ruvs[i] *= 0.5;
-  //ruvs[i] += 0.5;
+  ruvs[i] *= 2;
+  ruvs[i] -= .5;
 }
 var rmat = new THREE.MeshBasicMaterial({map: rtexture});
 var rmesh = new THREE.Mesh(rgeo, rmat);
 rmesh.rotation.y = -Math.PI / 2;
 rmesh.layers.set(2);
 scene.add(rmesh);
-
+var mesh = new THREE.Mesh(rgeo, rmat);
+mesh.rotation.y = -Math.PI / 2;
+scene.add(mesh);
 
 var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshLambertMaterial({color: 0x00ff00, overdraw:0.5});
+var material = new THREE.MeshLambertMaterial({color: 0x0000ff, overdraw:0.5});
 var cube = new THREE.Mesh(geometry, material);
 cube.position.set(0, 0, -5);
 scene.add(cube);
