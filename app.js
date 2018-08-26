@@ -20,6 +20,9 @@ var lmat = new THREE.MeshBasicMaterial({map: ltexture});
 var lmesh = new THREE.Mesh(lgeo, lmat);
 lmesh.rotation.y = -Math.PI / 2;
 lmesh.layers.set(1);
+var mesh = new THREE.Mesh(lgeo, lmat);
+mesh.rotation.y = -Math.PI / 2;
+scene.add(mesh);
 scene.add(lmesh);
 
 var rtexture = new THREE.TextureLoader().load("images/kid_right.jpg");
@@ -35,12 +38,9 @@ var rmesh = new THREE.Mesh(rgeo, rmat);
 rmesh.rotation.y = -Math.PI / 2;
 rmesh.layers.set(2);
 scene.add(rmesh);
-var mesh = new THREE.Mesh(rgeo, rmat);
-mesh.rotation.y = -Math.PI / 2;
-scene.add(mesh);
 
 var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshLambertMaterial({color: 0x0000ff, overdraw:0.5});
+var material = new THREE.MeshLambertMaterial({color: 0x00ff00, overdraw:0.5});
 var cube = new THREE.Mesh(geometry, material);
 cube.position.set(0, 0, -5);
 scene.add(cube);
