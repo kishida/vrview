@@ -27,7 +27,7 @@ rgeo.scale(-1, 1, 1);
 var ruvs = rgeo.attributes.uv.array;
 for (var i = 0; i < ruvs.length; i+=2) {
   ruvs[i] *= 0.5;
-  ruvs[i] += 0.5;
+  //ruvs[i] += 0.5;
 }
 var rmat = new THREE.MeshBasicMaterial({map: rtexture});
 var rmesh = new THREE.Mesh(rgeo, rmat);
@@ -37,7 +37,7 @@ scene.add(rmesh);
 
 
 var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshLambertMaterial({color: 0xff0000, overdraw:0.5});
+var material = new THREE.MeshLambertMaterial({color: 0x00ff00, overdraw:0.5});
 var cube = new THREE.Mesh(geometry, material);
 cube.position.set(0, 0, -5);
 scene.add(cube);
