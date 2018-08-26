@@ -20,9 +20,9 @@ var lmat = new THREE.MeshBasicMaterial({map: ltexture});
 var lmesh = new THREE.Mesh(lgeo, lmat);
 lmesh.rotation.y = -Math.PI / 2;
 lmesh.layers.set(1);
-var mesh = new THREE.Mesh(lgeo, lmat);
-mesh.rotation.y = -Math.PI / 2;
-scene.add(mesh);
+//var mesh = new THREE.Mesh(lgeo, lmat);
+//mesh.rotation.y = -Math.PI / 2;
+//scene.add(mesh);
 scene.add(lmesh);
 
 var rtexture = new THREE.TextureLoader().load("images/kid_right.jpg");
