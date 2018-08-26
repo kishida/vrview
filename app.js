@@ -8,7 +8,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 window.addEventListener('resize', onResize, true);
 
-var ltexture = new THREE.TextureLoader().load("images/kid_left.jpg");
+var ltexture = new THREE.TextureLoader().load("images/safeway_left.jpg");
 var lgeo = new THREE.SphereBufferGeometry( 500, 60, 40);
 lgeo.scale(-1, 1, 1);
 var luvs = lgeo.attributes.uv.array;
@@ -20,12 +20,12 @@ var lmat = new THREE.MeshBasicMaterial({map: ltexture});
 var lmesh = new THREE.Mesh(lgeo, lmat);
 lmesh.rotation.y = -Math.PI / 2;
 lmesh.layers.set(1);
-//var mesh = new THREE.Mesh(lgeo, lmat);
-//mesh.rotation.y = -Math.PI / 2;
-//scene.add(mesh);
+var mesh = new THREE.Mesh(lgeo, lmat);
+mesh.rotation.y = -Math.PI / 2;
+scene.add(mesh);
 scene.add(lmesh);
 
-var rtexture = new THREE.TextureLoader().load("images/kid_right.jpg");
+var rtexture = new THREE.TextureLoader().load("images/safeway_right.jpg");
 var rgeo = new THREE.SphereBufferGeometry( 500, 60, 40);
 rgeo.scale(-1, 1, 1);
 var ruvs = rgeo.attributes.uv.array;
