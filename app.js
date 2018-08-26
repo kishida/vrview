@@ -27,7 +27,7 @@ rgeo.scale(-1, 1, 1);
 var ruvs = lgeo.attributes.uv.array;
 for (var i = 0; i < ruvs.length; i+=2) {
   ruvs[i] *= 0.5;
-  ruvs[i] += 0.5;
+  //ruvs[i] += 0.5;
 }
 var rmat = new THREE.MeshBasicMaterial({map: rtexture});
 var rmesh = new THREE.Mesh(rgeo, rmat);
