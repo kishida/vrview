@@ -14,15 +14,17 @@ lgeo.scale(-1, 1, 1);
 var luvs = lgeo.attributes.uv.array;
 for (var i = 0; i < luvs.length; i+=2) {
   luvs[i] *= 2;
-luvs[i] -= .5;
+  luvs[i] -= .5;
 }
 var lmat = new THREE.MeshBasicMaterial({map: ltexture});
 var lmesh = new THREE.Mesh(lgeo, lmat);
-lmesh.rotation.y = -Math.PI / 2;
-lmesh.layers.set(1);
+// for not vr
 var mesh = new THREE.Mesh(lgeo, lmat);
 mesh.rotation.y = -Math.PI / 2;
 scene.add(mesh);
+// for left eye
+lmesh.rotation.y = -Math.PI / 2;
+lmesh.layers.set(1);
 scene.add(lmesh);
 
 var rtexture = new THREE.TextureLoader().load("images/safeway_right.jpg");
@@ -42,7 +44,7 @@ scene.add(rmesh);
 var geometry = new THREE.BoxGeometry(1, 1, 1);
 var material = new THREE.MeshLambertMaterial({color: 0x00ff00, overdraw:0.5});
 var cube = new THREE.Mesh(geometry, material);
-cube.position.set(0, 0, -5);
+cube.position.set(2.2, 0, -5);
 scene.add(cube);
 
 light = new THREE.DirectionalLight(0xdfebff, 1);
