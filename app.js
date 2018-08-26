@@ -8,6 +8,34 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 window.addEventListener('resize', onResize, true);
 
+var ltexture = new THREE.TextureLoader().load("images/kid_left.jpg");
+var lgeo = new THREE.SphereBufferGeometry( 500, 60, 40);
+lgeo.scale(-1, 1, 1);
+var luvs = lgeo.attributes.uv.array;
+for (var i = 0; i < luvs.length; i+=2) {
+  luvs[i] *= 0.5;
+}
+var lmat = new THREE.MeshBasicMaterial({map: ltexture});
+var lmesh = new THREE.Mesh(lgeo, lmat);
+lmesh.rotation.y = -Math.PI / 2;
+lmesh.layers.set(1);
+scene.add(lmesh);
+
+var rtexture = new THREE.TextureLoader().load("images/kid_right.jpg");
+var rgeo = new THREE.SphereBufferGeometry( 500, 60, 40);
+rgeo.scale(-1, 1, 1);
+var ruvs = lgeo.attributes.uv.array;
+for (var i = 0; i < ruvs.length; i+=2) {
+  ruvs[i] *= 0.5;
+  ruvs[i] += 0.5;
+}
+var rmat = new THREE.MeshBasicMaterial({map: rtexture});
+var rmesh = new THREE.Mesh(rgeo, rmat);
+rmesh.rotation.y = -Math.PI / 2;
+rmesh.layers.set(2);
+scene.add(rmesh);
+
+
 var geometry = new THREE.BoxGeometry(1, 1, 1);
 var material = new THREE.MeshLambertMaterial({color: 0x00ff00, overdraw:0.5});
 var cube = new THREE.Mesh(geometry, material);
