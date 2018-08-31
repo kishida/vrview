@@ -22,7 +22,8 @@
                     throw Error("File is not a JPEG");
                 }
                 
-                var blob = new Blob([new Uint8Array(data.buffer)], { type: "image/jpeg" });
+                var blob = new Blob([new Uint8Array(data.buffer)],
+                    { type: "image/jpeg" });
                 var urlCreator = window.URL || window.webkitURL;
                 var imageUrl = urlCreator.createObjectURL(blob);
                 var img = document.getElementById("left");
