@@ -61,6 +61,20 @@ loadVr180Images("images/tower.vr.jpg").then(images => {
     light.shadow.camera.far = 1000;
     scene.add(light);
 
+    // controller
+    var controller = renderer.vr.getController(0);
+    var contgeo = new THREE.BufferGeometry();
+    contgeo.addAttribute('position',
+        new THREE.Float32BufferAttribute([0,0,0,0,0,-1],3));
+    contgeo.addAttribute('color',
+        new THREE.Float32BufferAttribute([0.5,0.5,0.5,0,0,0],3));
+    var contmat = new THREE.LineBasicMaterial(
+        {vertexColors:true, 
+         linewidth: 2,
+         blending: THREE.AdditiveBlending});
+    controller.add( new THREE.Line(contgeo, contmat));
+    scene.add(controller);
+
     renderer.render(scene, camera);
     renderer.vr.enabled = true;
 
